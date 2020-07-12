@@ -1,4 +1,3 @@
-from notion.client import NotionClient
 import time
 
 from config import client, collection, publish_ready, published
