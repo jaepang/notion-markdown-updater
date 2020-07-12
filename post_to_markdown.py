@@ -13,10 +13,6 @@ def parse_language(lan):
         lan = 'objectivec'
     return lan
 
-'''
-TODO
-    1. bookmark (link) not work
-'''
 def post_to_markdown(post, depth):
     text = ""
     if depth == 0:
@@ -64,6 +60,8 @@ def post_to_markdown(post, depth):
         # Handles Dividers
         if block.type == "divider":
             text += "---" + "\n"
+        if block.type == "bookmark":
+            text += "[" + block.title + "](" + block.link + ")\n\n"
         # Handles Basic Text, Links, Single Line Code
         if block.type == "text":
             text += block.title + "\n\n"
