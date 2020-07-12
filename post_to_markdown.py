@@ -65,6 +65,7 @@ def post_to_markdown(post, depth):
         # Handles Basic Text, Links, Single Line Code
         if block.type == "text":
             text += block.title + "\n\n"
+        # Handle Nested Block
         children = block.children
         if bool(children):
             text += post_to_markdown(block, depth+1)
