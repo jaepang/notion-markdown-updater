@@ -80,11 +80,9 @@ def write_file(post, text):
     title = title.lower()
     try:
         os.mkdir(post_path + title)
-        print("new directory created")
     except:
         pass
     file = open(post_path + title + "/index.md", 'w')
-    print("Wrote A New Page")
     file.write(text)
 
 def update_row(post):
