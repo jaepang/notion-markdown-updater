@@ -7,7 +7,7 @@ import argparse
 from config import client, collection, publish_ready, published
 from post_to_markdown import update_row
 
-class notion_updater:
+class NotionUpdater:
     def __init__(self, log=None):
         logging.basicConfig(level=logging.INFO, format='%(message)s')
         self.logger = logging.getLogger("Notion Updater")
@@ -61,5 +61,5 @@ if __name__ == '__main__':
     parser.add_argument("--log", help="log filename", default=None)
     args = parser.parse_args()
 
-    updater = notion_updater(args.log)
+    updater = NotionUpdater(args.log)
     updater.main()
