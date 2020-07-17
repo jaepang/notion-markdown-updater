@@ -39,8 +39,7 @@ class NotionUpdater:
         start = record.status
         if start == publish_ready:
             record.status = published
-            self.logger.info("Updating")
-            self.logger.info(record.title + "...")
+            self.logger.info("Updating %s..." % record.title)
             update_row(record)
             self.logger.info("Done!\n")
         time.sleep(3)
