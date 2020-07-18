@@ -9,8 +9,9 @@ from post_to_markdown import update_row
 
 class NotionUpdater:
     def __init__(self, log=None):
-        logging.basicConfig(level=logging.INFO, format='%(message)s')
+        logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(message)s')
         self.logger = logging.getLogger("Notion Updater")
+        self.logger.propagate = False
         self.log = log
 
         if log:
@@ -47,8 +48,11 @@ class NotionUpdater:
     def register_row_callbacks(self, collection):
         self.logger.info("Registering Row Callbacks...\n")
         rows = collection.get_rows()
+        cnt=1
         for row in rows:
             row.add_callback(self.row_callback, callback_id="row_callback")
+            cnt += 1
+        self.logger.info("Registered %d rows" % cnt)
         return
 
     def collection_callback(self, record, difference, changes):
