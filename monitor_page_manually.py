@@ -23,8 +23,9 @@ def register_row_callbacks(collection):
 def collection_callback(record, difference, changes):
     register_row_callbacks(record)
 
-collection.add_callback(collection_callback)
-register_row_callbacks(collection)
-while True:
-    client.start_monitoring()
-    time.sleep(0.01)
+if __name__ == "__main__":
+    collection.add_callback(collection_callback)
+    register_row_callbacks(collection)
+    while True:
+        client.start_monitoring()
+        time.sleep(0.01)
