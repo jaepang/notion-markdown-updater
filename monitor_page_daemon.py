@@ -9,13 +9,15 @@ from post_to_markdown import update_row
 
 class NotionUpdater:
     def __init__(self, log=None):
-        logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(message)s')
+        logging.basicConfig(level=logging.INFO)
         self.logger = logging.getLogger("Notion Updater")
         self.logger.propagate = False
+        formatter = logging.Formatter("%(asctime)s: %(message)s")
         self.log = log
 
         if log:
             self.log_handler = logging.FileHandler(self.log)
+            self.log_handler.setFormatter(formatter)
             self.logger.addHandler(self.log_handler)
 
         self.__stop = False
@@ -40,13 +42,13 @@ class NotionUpdater:
         start = record.status
         if start == publish_ready:
             record.status = published
-            self.logger.info("Updating %s..." % record.title)
+            self.logger.info("Updating \"%s\"..." % record.title)
             update_row(record)
-            self.logger.info("Done!\n")
+            self.logger.info("Update \"%s\" Complete!" % record.title)
         time.sleep(3)
 
     def register_row_callbacks(self, collection):
-        self.logger.info("Registering Row Callbacks...\n")
+        self.logger.info("Registering Row Callbacks...")
         rows = collection.get_rows()
         cnt=1
         for row in rows:
