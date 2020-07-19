@@ -1,3 +1,6 @@
+<img align="right" src="https://miro.medium.com/max/700/1*aTuWWHnk0-FeyetCxyNCCg.png" alt="notion" />
+
 # notion-markdown-updater
 
-Notion을 블로그 CMS로 이용하기 위한 자동 마크다운 전환 및 업데이트 도구
+automatically parse & upload markdown document from notion database by just a click.
+using [notion-py](https://github.com/jamalex/notion-py)
