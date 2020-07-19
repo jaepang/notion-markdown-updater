@@ -7,4 +7,4 @@ using [notion-py](https://github.com/jamalex/notion-py)
 
 ## Prepare on notion
 add **Select** property to your notion database. One option will be the trigger to publish and one option will be the result.   
-![property-example](./image/property-example.png){: width="80%" height="80%"}
+<img align="right" src="./image/property-example.png" alt="property example" width=80% height=80% />
