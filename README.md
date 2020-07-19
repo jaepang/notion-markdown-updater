@@ -2,5 +2,9 @@
 
 # notion-markdown-updater
 
-automatically parse & upload markdown document from notion database by just a click.
+automatically parse & upload markdown document from notion database by just a click.   
 using [notion-py](https://github.com/jamalex/notion-py)
+
+## Prepare
+add **Select** property to your notion database.
+![property-example](./image/property-example.png)
