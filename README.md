@@ -1,4 +1,4 @@
-<img align="right" src="https://miro.medium.com/max/700/1*aTuWWHnk0-FeyetCxyNCCg.png" alt="notion" style="max-width: 250px !important;" />
+<img align="right" src="https://miro.medium.com/max/700/1*aTuWWHnk0-FeyetCxyNCCg.png" alt="notion" width=300 height=300 />
 
 # notion-markdown-updater
 
