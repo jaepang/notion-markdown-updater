@@ -6,5 +6,5 @@ automatically parse & upload markdown document from notion database by just a cl
 using [notion-py](https://github.com/jamalex/notion-py)
 
 ## Prepare on notion
-add **Select** property to your notion database. One option will be the trigger to publish and one option will be the result.   
+add **Select** property to your notion database. *One option* (🚀Ready to Publish on example) will be the trigger to publish and *one option* (📰Published on example) will be the result.   
 <img align="left" src="./image/property-example.png" alt="property example" width=80% height=80% />
