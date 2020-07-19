@@ -1,14 +1,7 @@
 [Unit]
 Description=Notion Updater Service
-After=multi-user.target
 
 [Service]
-Type=forking
-ExecStart=/usr/bin/python3 /home/ubuntu/jaekwang/notion-markdown-updater/main.py --pid /var/run/notion.pid --log /var/log/notion/notion.log
-Restart=always
-PIDFile=/var/run/notion.pid
-WorkingDirectory=/home/ubuntu/jaekwang/notion-markdown-updater/
-ExecStop=/bin/kill $MAINPID
-
-[Install]
-WantedBy=multi-user.target
+ExecStart=/usr/bin/python3 /home/ubuntu/.notion/notion-markdown-updater/notion_updater.py --log /home/ubuntu/.notion/notion-markdown-updater/update.log
+Restart=on-failure
+EnvironmentFile=/home/ubuntu/.config/secret
