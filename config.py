@@ -16,4 +16,4 @@ published = "📰Published"
 dont_publish = "🚫Don\'t Publish"
 
 # the path where you want to place markdown file
-post_path = "../blog/"
+post_path = "/home/ubuntu/blog/"
