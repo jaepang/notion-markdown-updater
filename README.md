@@ -8,6 +8,7 @@ using [notion-py](https://github.com/jamalex/notion-py)
 ## Prepare on notion
 add **Select** property to your notion database like example below. *One option* (**🚀Ready to Publish**) will be the trigger to publish and *one option* (**📰Published**) will be the result.   
 <img align="left" src="./image/property-example.png" alt="property example" width=80% height=80% />
+<br/>
 
 ## Install
 1. clone this repository to your local.   
