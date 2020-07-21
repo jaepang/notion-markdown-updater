@@ -27,39 +27,39 @@ publish_ready = "Your Option 1"
 published = "Your Option 2"
 ```
 2. Clone this repository to your local.   
-    ```shell
-    $ git clone https://github.com/shinjawkwang/notion-markdown-updater.git`
-    ```
+```shell
+$ git clone https://github.com/shinjawkwang/notion-markdown-updater.git`
+```
 3. Install cron if not exist.
-    ### Ubuntu
-    ```shell
-    $ sudo apt-get install -y cron 
-    ```
-    ### CentOS **(No tested)**
-    ```shell
-    $ yum -y install cronie
-    ```
+### Ubuntu
+```shell
+$ sudo apt-get install -y cron 
+```
+### CentOS **(No tested)**
+```shell
+$ yum -y install cronie
+```
 4. Run `crontab -e` and set environment variable. **The variable name should be accurate!**
-    ```shell
-    $ crontab -e
-    NOTION_TOKEN=<YOUR_NOTION_TOKEN>
-    DOCUMENTS_URL=<URL_OF_THE_PLACE_WHERE_YOUR_DATABASE_IS>
-    ```
-    `DOCUMENTS_URL` is just link of the page you want to register; it should be kind of database.
+```shell
+$ crontab -e
+NOTION_TOKEN=<YOUR_NOTION_TOKEN>
+DOCUMENTS_URL=<URL_OF_THE_PLACE_WHERE_YOUR_DATABASE_IS>
+```
+`DOCUMENTS_URL` is just link of the page you want to register; it should be kind of database.
 5. Before saving, register cron job.
-    ```shell
-    # Without log output
-    * * * * * python3 /absolute/path/of/repo/notion-markdown-updater/notion_updater.py
-    # With log of output or error (Recommend)
-    * * * * * python3 /absolute/path/of/repo/notion-markdown-updater/notion_updater.py >> ~/.log/log_`date +\%Y-\%m-\%d`.log 2>&1
-    ```
+```shell
+# Without log output
+* * * * * python3 /absolute/path/of/repo/notion-markdown-updater/notion_updater.py
+# With log of output or error (Recommend)
+* * * * * python3 /absolute/path/of/repo/notion-markdown-updater/notion_updater.py >> ~/.log/log_`date +\%Y-\%m-\%d`.log 2>&1
+```
 6. Restart cron service.
-    ### Ubuntu
-    ```shell
-    sudo service cron restart
-    ```
-    ### CentOS **(No tested)**
-    ```shell
-    sudo service crond restart
-    ```
+### Ubuntu
+```shell
+sudo service cron restart
+```
+### CentOS **(No tested)**
+```shell
+sudo service crond restart
+```
 7. Done!
