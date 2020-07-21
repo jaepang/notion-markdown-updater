@@ -20,17 +20,17 @@ pip install notion
 ```
 
 ## Install & Quick Start
-1. On `config.py`, edit the option text to your option that you set on [Prepare](#Prepare). You can use emoji.
+On `config.py`, edit the option text to your option that you set on [Prepare](#Prepare). You can use emoji.
 ```python
 # post status str
 publish_ready = "Your Option 1"
 published = "Your Option 2"
 ```
-2. Clone this repository to your local.   
+Clone this repository to your local.   
 ```shell
 $ git clone https://github.com/shinjawkwang/notion-markdown-updater.git`
 ```
-3. Install cron if not exist.
+Install cron if not exist.
 ### Ubuntu
 ```shell
 $ sudo apt-get install -y cron 
@@ -39,7 +39,7 @@ $ sudo apt-get install -y cron
 ```shell
 $ yum -y install cronie
 ```
-4. Run `crontab -e` and set environment variable. **The variable name should be accurate!**
+Run `crontab -e` and set environment variable. **The variable name should be accurate!**
 ```shell
 $ crontab -e
 NOTION_TOKEN=<YOUR_NOTION_TOKEN>
@@ -53,7 +53,7 @@ DOCUMENTS_URL=<URL_OF_THE_PLACE_WHERE_YOUR_DATABASE_IS>
 # With log of output or error (Recommend)
 * * * * * python3 /absolute/path/of/repo/notion-markdown-updater/notion_updater.py >> ~/.log/log_`date +\%Y-\%m-\%d`.log 2>&1
 ```
-6. Restart cron service.
+Restart cron service.
 ### Ubuntu
 ```shell
 sudo service cron restart
@@ -62,4 +62,4 @@ sudo service cron restart
 ```shell
 sudo service crond restart
 ```
-7. Done!
+Done! Check out it is working.
