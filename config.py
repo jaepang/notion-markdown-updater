@@ -13,7 +13,6 @@ posts = collection.get_rows()
 # post status str
 publish_ready = "🚀Ready to Publish"
 published = "📰Published"
-dont_publish = "🚫Don\'t Publish"
 
 # the path where you want to place markdown file
 post_path = "/home/ubuntu/blog/"
