@@ -89,9 +89,9 @@ def update_row(post):
     text = post_to_markdown(post, 0)
     write_file(post, text)
 
-# write file manually
-for post in posts:
-    if post.status == publish_ready:
-        text = post_to_markdown(post, 0)
-        write_file(post, text)
-        post.status = published
+if __name__ == "__main__":
+    for post in posts:
+        if post.status == publish_ready:
+            update_row(post)
+            post.status = published
+            print(datetime.now, ": updated \"%s\"" % post.title, sep="")
