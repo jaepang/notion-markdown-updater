@@ -1,7 +1,0 @@
-[Unit]
-Description=Notion Updater Service
-
-[Service]
-ExecStart=/usr/bin/python3 /home/ubuntu/.notion/notion-markdown-updater/notion_updater.py --log /home/ubuntu/.notion/notion-markdown-updater/update.log
-Restart=on-failure
-EnvironmentFile=/home/ubuntu/.config/secret

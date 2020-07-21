@@ -1,70 +1,97 @@
-import time
-import logging
 import os
-import signal
-import argparse
+import datetime
 
-from config import client, collection, publish_ready, published
-from post_to_markdown import update_row
+from config import posts, post_path, publish_ready, published
 
-class NotionUpdater:
-    def __init__(self, log=None):
-        logging.basicConfig(level=logging.INFO)
-        self.logger = logging.getLogger("Notion Updater")
-        self.logger.propagate = False
-        formatter = logging.Formatter("%(asctime)s: %(message)s")
-        self.log = log
+def parse_language(lan):
+    lan = lan.lower()
+    if lan == 'c++':
+        lan = 'cpp'
+    elif lan == 'c#':
+        lan = 'csharp'
+    elif lan == 'objective-c':
+        lan = 'objectivec'
+    return lan
 
-        if log:
-            self.log_handler = logging.FileHandler(self.log)
-            self.log_handler.setFormatter(formatter)
-            self.logger.addHandler(self.log_handler)
+def post_to_markdown(post, depth):
+    text = ""
+    if depth == 0:
+        # Handle Frontmatter
+        text += "---\ntitle: %s\ndate: %s\ndescription: %s\n---" % (post.title, post.created, post.description)
+        # Handle Title
+        text += "\n\n" + "# " + post.title + "\n\n"
+    numered_list_index = 1
+    bullet = False
 
-        self.__stop = False
+    for block in post.children:
+        for i in range(0, depth):
+            text += "\t"
+        # Handles Numbered List
+        if block.type == "numbered_list":
+            text += str(numered_list_index) + ". " + block.title + "\n"
+            numered_list_index += 1
+        else:
+            if numered_list_index > 1:
+                text += "\n"
+            numered_list_index = 1
+        # Handles Bullets List
+        if block.type == "bulleted_list":
+            text += "- " + block.title + "\n"
+            bullet = True
+        else:
+            if bullet:
+                text += "\n"
+            bullet = False
+        # Handles H1
+        if block.type == "header":
+            text += "# " + block.title + "\n\n"
+        # Handles H2
+        if block.type == "sub_header":
+            text += "## " + block.title + "\n\n"
+        # Handles H3
+        if block.type == "sub_sub_header":
+            text += "### " + block.title + "\n\n"
+        # Handles Code Blocks
+        if block.type == "code":
+            text += "``` " + parse_language(block.language) + "\n" + block.title + "\n```\n\n"
+        # Handles Images
+        if block.type == "image":
+            text += "![" + block.id + "](" + block.source + ")\n\n"
+        # Handles Dividers
+        if block.type == "divider":
+            text += "---" + "\n"
+        if block.type == "bookmark":
+            text += "[" + block.title + "](" + block.link + ")\n\n"
+        # Handles Basic Text, Links, Single Line Code
+        if block.type == "text":
+            text += block.title + "\n\n"
+        # Handle Nested Block
+        children = block.children
+        if bool(children):
+            text += post_to_markdown(block, depth+1)
+    return text
 
-        signal.signal(signal.SIGINT, self.stop)
-        signal.signal(signal.SIGTERM, self.stop)
-    
-    def main(self):
-        collection.add_callback(self.collection_callback)
-        self.register_row_callbacks(collection)
-        self.logger.info("Start Monitoring - PID(%s)" % os.getpid())
-        while not self.__stop:
-            client.start_monitoring()
-            time.sleep(0.01)
+def write_file(post, text):
+    title = post.title.replace(" ", "-")
+    title = title.replace(".", "")
+    title = title.replace(",", "")
+    title = title.replace(":", "")
+    title = title.replace(";", "")
+    title = title.lower()
+    try:
+        os.mkdir(post_path + title)
+    except:
+        pass
+    file = open(post_path + title + "/index.md", 'w')
+    file.write(text)
 
-    def stop(self, signum, frame):
-        self.__stop = True
-        self.logger.info("Receive Signal %s" % signum)
-        self.logger.info("Stop Monitoring - PID(%s)" % os.getpid())
+def update_row(post):
+    text = post_to_markdown(post, 0)
+    write_file(post, text)
 
-    def row_callback(self, record, changes):
-        start = record.status
-        if start == publish_ready:
-            record.status = published
-            self.logger.info("Updating \"%s\"..." % record.title)
-            update_row(record)
-            self.logger.info("Update \"%s\" Complete!" % record.title)
-        time.sleep(3)
-
-    def register_row_callbacks(self, collection):
-        self.logger.info("Registering Row Callbacks...")
-        rows = collection.get_rows()
-        cnt=1
-        for row in rows:
-            row.add_callback(self.row_callback, callback_id="row_callback")
-            cnt += 1
-        self.logger.info("Registered %d rows" % cnt)
-        return
-
-    def collection_callback(self, record, difference, changes):
-        self.register_row_callbacks(record)
-
-
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--log", help="log filename", default=None)
-    args = parser.parse_args()
-
-    updater = NotionUpdater(args.log)
-    updater.main()
+if __name__ == "__main__":
+    for post in posts:
+        if post.status == publish_ready:
+            update_row(post)
+            post.status = published
+            print(datetime.now, ": updated \"%s\"" % post.title, sep="")
