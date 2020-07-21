@@ -20,7 +20,12 @@ pip install notion
 ```
 
 ## Install & Quick Start
-1. On `config.py`, edit the option text to your option that you set on [Prepare](#Prepare).
+1. On `config.py`, edit the option text to your option that you set on [Prepare](#Prepare). You can use emoji.
+```python
+# post status str
+publish_ready = "Your Option 1"
+published = "Your Option 2"
+```
 2. Clone this repository to your local.   
     ```shell
     $ git clone https://github.com/shinjawkwang/notion-markdown-updater.git`
