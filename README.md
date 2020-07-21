@@ -45,8 +45,8 @@ $ crontab -e
 NOTION_TOKEN=<YOUR_NOTION_TOKEN>
 DOCUMENTS_URL=<URL_OF_THE_PLACE_WHERE_YOUR_DATABASE_IS>
 ```
-`DOCUMENTS_URL` is just link of the page you want to register; it should be kind of database.
-5. Before saving, register cron job.
+`DOCUMENTS_URL` is just link of the page you want to register; it should be kind of database.   
+Before saving, register cron job.
 ```shell
 # Without log output
 * * * * * python3 /absolute/path/of/repo/notion-markdown-updater/notion_updater.py
