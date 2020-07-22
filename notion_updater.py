@@ -2,7 +2,7 @@ import os
 from datetime import datetime
 from pytz import timezone
 
-from config import posts, timezone_log, post_path, publish_ready, published
+from config import *
 
 def parse_language(lan):
     lan = lan.lower()
