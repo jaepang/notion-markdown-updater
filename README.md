@@ -35,11 +35,11 @@ Install cron if not exist.
 ```shell
 $ sudo apt-get install -y cron 
 ```
-### CentOS **(No tested)**
+### CentOS **(Not tested)**
 ```shell
 $ yum -y install cronie
 ```
-Run `crontab -e` and set environment variable. **The variable name should be accurate!**   
+Run `crontab -e` and set environment variable. **The variable name should be accurate!**
 `DOCUMENTS_URL` is just link of the page you want to register; it should be kind of database.
 ```shell
 $ crontab -e
@@ -69,7 +69,7 @@ Restart cron service.
 ```shell
 sudo service cron restart
 ```
-### CentOS **(No tested)**
+### CentOS **(Not tested)**
 ```shell
 sudo service crond restart
 ```
