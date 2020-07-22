@@ -74,4 +74,4 @@ sudo service cron restart
 ```shell
 sudo service crond restart
 ```
-Done! Check out it is working.
+Done! Check out whether it is working.
