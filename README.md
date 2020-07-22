@@ -1,6 +1,6 @@
 <img align="right" src="https://miro.medium.com/max/700/1*aTuWWHnk0-FeyetCxyNCCg.png" alt="notion" width=25% height=25% />
 
-# notion-markdown-updater
+# Notion Markdown Updater
 
 automatically parse & upload markdown file from document at notion database by just a click.   
 - Used Unofficial Python 3 client for Notion.so API v3, [notion-py](https://github.com/jamalex/notion-py)
