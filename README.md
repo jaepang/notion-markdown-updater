@@ -28,7 +28,7 @@ published = "Your Option 2"
 ```
 Clone this repository to your local.   
 ```shell
-$ git clone https://github.com/shinjawkwang/notion-markdown-updater.git`
+$ git clone https://github.com/shinjawkwang/notion-markdown-updater.git
 ```
 Install cron if not exist.
 ### Ubuntu
