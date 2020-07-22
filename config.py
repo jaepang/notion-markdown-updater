@@ -4,7 +4,8 @@ from notion.client import NotionClient
 # Init NotionClient
 NOTION_TOKEN = os.getenv("NOTION_TOKEN")
 HOME_URL = os.getenv("DOCUMENTS_URL")
-client = NotionClient(token_v2=NOTION_TOKEN, monitor=True, start_monitoring=True)
+# client = NotionClient(token_v2=NOTION_TOKEN, monitor=True, start_monitoring=True)
+client = NotionClient(token_v2=NOTION_TOKEN)
 blog_home = client.get_block(HOME_URL)
 COLLECTION_ID = blog_home.collection.id
 collection = client.get_collection(COLLECTION_ID)
