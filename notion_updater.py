@@ -100,3 +100,4 @@ if __name__ == "__main__":
             new_publish = True
     if new_publish and auto_deploy:
         # auto_deploy
+        print(datetime.datetime.now(), ": deploy start", sep="")
