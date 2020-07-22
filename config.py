@@ -1,7 +1,7 @@
 import os
 from notion.client import NotionClient
 
-# notion private information and init NotionClient
+# Init NotionClient
 NOTION_TOKEN = os.getenv("NOTION_TOKEN")
 HOME_URL = os.getenv("DOCUMENTS_URL")
 client = NotionClient(token_v2=NOTION_TOKEN, monitor=True, start_monitoring=True)
