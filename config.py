@@ -17,8 +17,10 @@ published = "📰Published"
 # timezone for displaying on log
 timezone_log = 'Asia/Seoul'
 
-# the path where you want to place markdown file
+# the absolute path where you want to place markdown file
 post_path = "/home/ubuntu/blog/"
+# the absolute path of this directory
+where_am_i = "/home/ubuntu/jaekwang/notion-markdown-updater/"
 
 # auto push when change made
 auto_deploy = True

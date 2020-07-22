@@ -1,6 +1,7 @@
 import os
 from datetime import datetime
 from pytz import timezone
+import subprocess
 
 from config import *
 
@@ -101,4 +102,5 @@ if __name__ == "__main__":
             new_publish = True
     if auto_deploy and new_publish:
         # auto_deploy
-        print(datetime.now(timezone(timezone_log)).strftime('%Y-%m-%d %H:%M:%S'), ": deploy start", sep="")
+        subprocess.call([where_am_i + "deploy.sh"], shell=True)
+        print(datetime.now(timezone(timezone_log)).strftime('%Y-%m-%d %H:%M:%S'), ": deploy completed", sep="")
