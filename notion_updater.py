@@ -1,7 +1,8 @@
 import os
-import datetime
+from datetime import datetime
+from pytz import timezone
 
-from config import posts, post_path, publish_ready, published
+from config import posts, timezone_log, post_path, publish_ready, published
 
 def parse_language(lan):
     lan = lan.lower()
@@ -96,8 +97,8 @@ if __name__ == "__main__":
         if post.status == publish_ready:
             update_row(post)
             post.status = published
-            print(datetime.datetime.now(), ": updated \"%s\"" % post.title, sep="")
+            print(datetime.now(timezone=timezone_log), ": updated \"%s\"" % post.title, sep="")
             new_publish = True
-    if new_publish and auto_deploy:
+    if auto_deploy and new_publish:
         # auto_deploy
-        print(datetime.datetime.now(), ": deploy start", sep="")
+        print(datetime.now(timezone=timezone_log), ": deploy start", sep="")

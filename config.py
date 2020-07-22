@@ -14,6 +14,9 @@ posts = collection.get_rows()
 publish_ready = "🚀Ready to Publish"
 published = "📰Published"
 
+# timezone for displaying on log
+timezone_log = 'Asia/Seoul'
+
 # the path where you want to place markdown file
 post_path = "/home/ubuntu/blog/"
 
