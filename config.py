@@ -23,4 +23,4 @@ post_path = "/home/ubuntu/blog/"
 where_am_i = "/home/ubuntu/jaekwang/notion-markdown-updater/"
 
 # auto push when change made
-auto_deploy = True
+auto_deploy = False
