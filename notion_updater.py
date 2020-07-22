@@ -97,8 +97,8 @@ if __name__ == "__main__":
         if post.status == publish_ready:
             update_row(post)
             post.status = published
-            print(datetime.now(timezone=timezone_log), ": updated \"%s\"" % post.title, sep="")
+            print(datetime.now(timezone=timezone_log).strftime('%Y-%m-%d %H:%M:%S'), ": updated \"%s\"" % post.title, sep="")
             new_publish = True
     if auto_deploy and new_publish:
         # auto_deploy
-        print(datetime.now(timezone=timezone_log), ": deploy start", sep="")
+        print(datetime.now(timezone=timezone_log).strftime('%Y-%m-%d %H:%M:%S'), ": deploy start", sep="")
