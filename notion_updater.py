@@ -82,6 +82,7 @@ def write_file(post, text):
         os.mkdir(post_path + title)
     except:
         pass
+    # Fix here with your own path and format of your blog:
     file = open(post_path + title + "/index.md", 'w')
     file.write(text)
 
