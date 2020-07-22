@@ -58,7 +58,7 @@ Before saving, determine the intervals to monitor and register cron job. Below i
 # Example - every 10:05 and 10:45 on monday to friday:
 45,5 10 * * 1-5 root /usr/bin/rdate -s time.bora.net && clock -w
 ```
-This script make computer runs the python script every one minute.
+This script make computer run the python script every one minute.
 ```shell
 # Without log output
 * * * * * python3 /absolute/path/of/repo/notion-markdown-updater/notion_updater.py
