@@ -90,8 +90,12 @@ def update_row(post):
     write_file(post, text)
 
 if __name__ == "__main__":
+    new_publish = False
     for post in posts:
         if post.status == publish_ready:
             update_row(post)
             post.status = published
-            print(datetime.now, ": updated \"%s\"" % post.title, sep="")
+            print(datetime.datetime.now(), ": updated \"%s\"" % post.title, sep="")
+            new_publish = True
+    if new_publish and auto_deploy:
+        # auto_deploy

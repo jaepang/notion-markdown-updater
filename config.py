@@ -16,3 +16,6 @@ published = "📰Published"
 
 # the path where you want to place markdown file
 post_path = "/home/ubuntu/blog/"
+
+# auto push when change made
+auto_deploy = True
