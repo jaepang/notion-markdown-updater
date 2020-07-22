@@ -39,14 +39,25 @@ $ sudo apt-get install -y cron
 ```shell
 $ yum -y install cronie
 ```
-Run `crontab -e` and set environment variable. **The variable name should be accurate!**
+Run `crontab -e` and set environment variable. **The variable name should be accurate!**   
+`DOCUMENTS_URL` is just link of the page you want to register; it should be kind of database.
 ```shell
 $ crontab -e
 NOTION_TOKEN=<YOUR_NOTION_TOKEN>
 DOCUMENTS_URL=<URL_OF_THE_PLACE_WHERE_YOUR_DATABASE_IS>
 ```
-`DOCUMENTS_URL` is just link of the page you want to register; it should be kind of database.   
-Before saving, register cron job.
+Before saving, determine the intervals to monitor and register cron job. Below is the rule of interval.
+```shell
+# .---------------- minute (0 - 59)
+# | .------------- hour (0 - 23)
+# | | .---------- day of month (1 - 31) 
+# | | | .------- month (1 - 12) OR jan,feb,mar,apr ... 
+# | | | | .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat 
+# | | | | | 
+# * * * * * user-name command to be executed
+# Example - every 10:05 and 10:45 on monday to friday:
+45,5 10 * * 1-5 root /usr/bin/rdate -s time.bora.net && clock -w
+```
 ```shell
 # Without log output
 * * * * * python3 /absolute/path/of/repo/notion-markdown-updater/notion_updater.py
