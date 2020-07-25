@@ -98,7 +98,7 @@ cd build
 git init
 ...
 ```
-The important thing is, you should add remote of github to the target directory.
+The important thing is that you should add remote of github to the target directory.
 ```shell
 git remote add origin "https or ssh"
 ```
