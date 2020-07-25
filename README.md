@@ -75,3 +75,30 @@ sudo service cron restart
 sudo service crond restart
 ```
 Done! Check out whether it is working.
+
+## Auto deploy on your service
+On `config.py`, set `auto_deploy` to `True`.
+```python
+# config.py
+auto_deploy = True
+```
+On `deploy.sh` line 10, set your absolute path of directory where you want to push to github.
+```shell
+# navigate into the build output directory
+cd /path/to/directory
+```
+If your blog service need build to deploy, add the script between `cd` and `git push`
+```shell
+cd /home/ubuntu/blog
+
+# add your build script here, if build is necessary
+npm run build
+cd build
+
+git init
+...
+```
+The important thing is, you should add remote of github to the target directory.
+```shell
+git remote add origin "https or ssh"
+```
