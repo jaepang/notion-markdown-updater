@@ -4,16 +4,23 @@
 set -e
 
 # navigate into the build output directory
-cd /home/ubuntu/blog
+cd /home/ubuntu/jaekwang/techArchive
+# build
+npm run build
 
-# add your build script here, if build is necessary
+# navigate into the build output directory
+cd build
 
 
 git init
 git add -A
-git commit -m 'deploy posts converted from notion'
+git commit -m 'deploy with vuepress'
 
-# You should add origin remote before running this script.
-git push -f origin master
+# if you are deploying to https://<USERNAME>.github.io
+# git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git master
+
+# if you are deploying to https://<USERNAME>.github.io/<REPO>
+git push -f https://github.com/shinjawkwang/techArchive master:gh-pages
+
 
 cd -

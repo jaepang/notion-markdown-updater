@@ -15,13 +15,14 @@ def parse_language(lan):
         lan = 'objectivec'
     return lan
 
+def parse_boj_title(post):
+    return ''.join(list(filter(str.isdigit, post.title[:post.title.find(".")])))
+
 def post_to_markdown(post, depth):
     text = ""
     if depth == 0:
         # Handle Frontmatter
-        text += "---\ntitle: %s\ndate: %s\ndescription: %s\n---" % (post.title, post.created, post.description)
-        # Handle Title
-        text += "\n\n" + "# " + post.title + "\n\n"
+        text += "---\ntitle: %s\ndate: %s\nsummary: %s\n---" % (post.title, post.created, post.description)
     numered_list_index = 1
     bullet = False
 
@@ -80,12 +81,12 @@ def write_file(post, text):
     title = title.replace(":", "")
     title = title.replace(";", "")
     title = title.lower()
-    try:
-        os.mkdir(post_path + title)
-    except:
-        pass
     # Fix here with your own path and format of your blog:
-    file = open(post_path + title + "/index.md", 'w')
+    if 'daily coding' in post.category:
+        path = post_path + 'Daily_Coding/'
+    else:
+        path = post_path + 'Datastructure_and_Algorithm/'
+    file = open(path + post.created.strftime("%Y-%m-%d-") + parse_boj_title(post) + ".md", 'w')
     file.write(text)
 
 def update_row(post):
