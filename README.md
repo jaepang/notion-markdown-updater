@@ -1,7 +1,7 @@
 <img align="right" src="https://miro.medium.com/max/700/1*aTuWWHnk0-FeyetCxyNCCg.png" alt="notion" width=25% height=25% />
 
 # Notion Markdown Updater
-
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](code_of_conduct.md)
 automatically parse & upload markdown file from document at notion database by just a click.   
 - Used Unofficial Python 3 client for Notion.so API v3, [notion-py](https://github.com/jamalex/notion-py)
 - Check if there is any post ready for publish every interval you want, then parse the post into markdown & save it.
