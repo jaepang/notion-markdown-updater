@@ -22,7 +22,7 @@ def post_to_markdown(post, depth):
     text = ""
     if depth == 0:
         # Handle Frontmatter
-        text += "---\ntitle: %s\ndate: %s\nsummary: %s\n---" % (post.title, post.created, post.description)
+        text += "---\ntitle: %s\ndate: %s\nsummary: %s\n---\n\n" % (post.title, post.created, post.description)
     numered_list_index = 1
     bullet = False
 
