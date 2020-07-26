@@ -61,9 +61,9 @@ Before saving, determine the intervals to monitor and register cron job. Below i
 This script makes computer run the python script every one minute. Check `crontab_example` if confusing.
 ```shell
 # Without log output
-* * * * * python3 /absolute/path/of/repo/notion-markdown-updater/notion_updater.py
+* * * * * python3 /absolute/path/of/repo/notion-markdown-updater/src/notion_updater.py
 # With log of output or error (Recommend)
-* * * * * python3 /absolute/path/of/repo/notion-markdown-updater/notion_updater.py >> ~/.log/log_`date +\%Y-\%m-\%d`.log 2>&1
+* * * * * python3 /absolute/path/of/repo/notion-markdown-updater/src/notion_updater.py >> ~/.log/log_`date +\%Y-\%m-\%d`.log 2>&1
 ```
 Restart cron service.
 ### Ubuntu
