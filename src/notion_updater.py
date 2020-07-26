@@ -57,6 +57,12 @@ def post_to_markdown(post, depth):
         # Handles Code Blocks
         if block.type == "code":
             text += "``` " + parse_language(block.language) + "\n" + block.title + "\n```\n\n"
+        # Handles Callout Blocks
+        if (block.type == 'callout'):
+            text += '> ' + block.icon + ' ' + block.title + '\n\n'
+        # Handles Quote Blocks
+        if (block.type == 'quote'):
+            text += '> ' + block.title + '\n\n'
         # Handles Images
         if block.type == "image":
             text += "![" + block.id + "](" + block.source + ")\n\n"

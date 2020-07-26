@@ -1,4 +1,4 @@
 NOTION_TOKEN=<YOUR_NOTION_TOKEN>
 DOCUMENTS_URL=<URL_OF_THE_PLACE_WHERE_YOUR_DATABASE_IS>
 # With log of output or error (Recommend)
-* * * * * python3 /absolute/path/of/repo/notion-markdown-updater/notion_updater.py >> ~/.log/log_`date +\%Y-\%m-\%d`.log 2>&1
+* * * * * python3 /absolute/path/of/repo/notion-markdown-updater/src/notion_updater.py >> ~/.log/log_`date +\%Y-\%m-\%d`.log 2>&1
