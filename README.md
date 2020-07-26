@@ -98,7 +98,8 @@ cd build
 git init
 ...
 ```
-The important thing is that you should add remote of github to the target directory.
+Set your push option to repository. By default, you should add remote previously.
+Or you can use `https` or `ssh` url.
 ```shell
 git remote add origin "https or ssh"
 ```
